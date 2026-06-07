@@ -8,20 +8,32 @@ Here's the link of the
 
 ## 🗺️ Learning Roadmap
 
-- [x] **01. JavaScript Basics**
-- [x] **02. Numbers and Math** 
-- [x] **03. Strings** 
-- [x] **04. HTML CSS Review**
-- [x] **05. Variable**
-- [x] **06. Boolean and if-statements**
-- [x] **07.Functions**
-- [x] **08.Objects**
-- [x] **09.Document Object Model**
-- [x] **10.HTML,CSS & JavaScript together**
-- [x] **11.Arrays and loops**
-- [x] **11.(part 2) Array and loops**
-- [ ] **12.Advanced Functions**
-- [ ] **12.(part 2) Advanced Functions**
+### 🔹 Phase 1: Core Computational Logic & Syntax
+- [x] **01. Basics, Numbers, & Strings** *(Lessons 1-3)*
+- [x] **02. Variables & Conditionals** *(Lessons 4-6)*
+- [x] **03. Procedural Functions** *(Lesson 7)*
 
+### 🔹 Phase 2: Dynamic Data Structures & UI State
+- [x] **04. Objects & Memory Management** *(Lesson 8)*
+- [x] **05. Document Object Model (DOM)** *(Lessons 9-10)*
+- [ ] **06. Arrays, Loops, & LocalStorage** *(Lessons 11 Part 1 & 2)* *[CURRENTLY HERE]*
 
+### 🔹 Phase 3: Advanced JS Architecture & System Scaling
+- [ ] **07. Advanced Functions** *(Lesson 12 Part 1 & 2)*
+- [ ] **08. Modularization & Git Ecosystem** *(Lessons 13-15)*
+- [ ] **09. Robust Software Testing** *(Lesson 16)*
+- [ ] **10. Object-Oriented Programming (OOP)** *(Lesson 17 & Classes/Inheritance)*
+
+### 🔹 Phase 4: Asynchronous Architectures & Backend Gateways
+- [ ] **11. Non-Blocking Event Loops & Callbacks** *(Lesson 18 - Part 1)*
+- [ ] **12. Promises & Fetch Gateways** *(Lesson 18 - Part 2)*
+- [ ] **13. Async/Await Abstractions** *(Lesson 18 - Part 3)*
+---
+
+## 📂 Subfolder Quick Links
+
+* [📁 Phase 1: Core Logic](./Phase-01-Core-Syntax-Logic)
+* [📁 Phase 2: Data Structures & DOM](./Phase-02-Data-Structures-DOM)
+* [📁 Phase 3: Advanced Architecture](./Phase-03-Advanced-JS-Architecture)
+* [📁 Phase 4: Asynchronous & Backend](./Phase-04-Asynchronous-Backend)
 
