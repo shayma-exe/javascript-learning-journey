@@ -1,12 +1,12 @@
 # 🚀 My JavaScript Learning Journey
 
-Welcome to my central documentation space! This repository serves as a living laboratory where I log my daily progress, dissect complex computer science logic through JavaScript, and track my transition into modern software architecture.
-Taking it from Super Simple Dev JavaScript Course on Youtube
-[Course Link Here](https://youtu.be/EerdGm-ehJQ?si=7s3M9PI1vbPCbJRx)
+Welcome to my central documentation space! This repository serves as a living laboratory where I log my learning progress into my JavaScript Course from Super Simple Dev
+Here's the link of the 
+[Course](https://youtu.be/EerdGm-ehJQ?si=7s3M9PI1vbPCbJRx) on youtube
 
 ---
 
-## 🗺️ Learning Roadmap & Status
+## 🗺️ Learning Roadmap
 
 - [x] **01. JavaScript Basics**
 - [x] **02. Numbers and Math** 
