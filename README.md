@@ -16,7 +16,7 @@ Here's the link of the
 ### 🔹 Phase 2: Dynamic Data Structures & UI State
 - [x] **04. Objects & Memory Management** *(Lesson 8)*
 - [x] **05. Document Object Model (DOM)** *(Lessons 9-10)*
-- [ ] **06. Arrays, Loops, & LocalStorage** *(Lessons 11 Part 1 & 2)* *[CURRENTLY HERE]*
+- [x] **06. Arrays, Loops, & LocalStorage** *(Lessons 11 Part 1 & 2)*
 
 ### 🔹 Phase 3: Advanced JS Architecture & System Scaling
 - [ ] **07. Advanced Functions** *(Lesson 12 Part 1 & 2)*
