@@ -9,6 +9,7 @@ To help you navigate through this note ;)
 3. [Array's 'for' loop alternative : forEach()](#3-foreach)
 4. [Run funtion when timer ends : setTimeout()](#4-settimeout)
 5. [Run function multiple time : setInterval()](#5-setinterval)
+6. [Exercises](#6-exercises)
 
 ---
 
@@ -87,6 +88,33 @@ Takes 2 params `function(value,index)`
 ---
 
 ## 5. setInterval()
+
+---
+
+## 6. Exercises
+Some exercises I solved using the concepts seen above along with my notes and reflections on each  
+enjoy the trip ;) 
+
+### 1. 'ADDED' button 
+
+```HTML
+<script>
+      let timeoutId;
+
+      function displayMessage() {
+        const messageElement = document.querySelector('.js-message');
+        messageElement.innerHTML = 'Added';
+
+        // First, cancel the previous timeout so that
+        // it doesn't remove the message too quickly.
+        clearTimeout(timeoutId);
+
+        timeoutId = setTimeout(function() {
+          messageElement.innerHTML = '';
+        }, 2000);
+      }
+    </script>
+```
 
 
 
