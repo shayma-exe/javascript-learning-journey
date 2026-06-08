@@ -40,16 +40,17 @@ Function are just another type of values : `valueOf(function(){...})` returns 'f
 
 ### 💻 Example Syntax :
 Let's build one together :D !   
-1. First the 'mother' function = receiving
+1. First the 'mother' function = receiving into it's params  
+👀 Notice how we treated `param` just like a function inside `run()`'s body
 
 ```JavaScript
 function run(param) {
   param();
 }
 ```
-2. We'll call this same function `run(...)` below  
+2. We'll call this `run(...)` function  below  
 **The new thing ?**   
-We're passing **another** function inside it !  
+We're passing **another** function as a parameter inside it !  
 ```JavaScript
 run(function() {
   console.log('hello');
@@ -78,8 +79,7 @@ Takes 2 params `function(value,index)`
   console.log(value);
 })
 ```
-Result : 
-Notice here how we created an array first, then called .forEach() method from it
+👀 Notice how we created an array first, then called .forEach() method from it
 
 ---
 ## 4. setTimeout()
