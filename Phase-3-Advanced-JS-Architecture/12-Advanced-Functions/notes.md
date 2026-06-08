@@ -20,10 +20,13 @@ To help you navigate through this note ;)
 
 ---
 ## 3. forEach()
-For each is a method from the array class
-it takes 2 params : 1st = value & 2nd = index
-/!\ Order is important : 
+A method from the *array* class = call it from an array object :)  
+Takes 2 params `function(value,index)`    
+**1st :**  value of a specific element in the array  
+**2nd :** index of that same element    
+/!\ Params order is important.  
 
+*Example :*
 ```javascript
 [
   'make dinner',
