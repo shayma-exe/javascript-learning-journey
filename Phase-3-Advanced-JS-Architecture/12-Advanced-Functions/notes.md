@@ -14,6 +14,20 @@ To help you navigate through this note ;)
 
 ## 1. Hoisting
 
+### 🧠 The Core Concept
+We can call the function (its name) before its body code
+
+### 💻 Example :
+```JavaScript
+greeting()
+function greeting() {
+  console.log('hello');
+}
+```
+Notice how we invoke `greeting()` before its body (function declaration) later on  
+**How can that be possible :O ?**  
+The JavaScript engine *scans* our file and allocates memory for function declarations **BEFORE** executing the code line-by-line
+
 ---
 
 ## 2. callBack
