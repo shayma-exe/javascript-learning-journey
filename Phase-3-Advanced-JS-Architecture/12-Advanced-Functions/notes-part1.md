@@ -1,4 +1,4 @@
-# 📓 Lesson 12: Advanced Functions
+# 📓 Lesson 12: Advanced Functions (part 1)
 
 ---
 
