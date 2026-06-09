@@ -19,7 +19,7 @@ Here's the link of the
 - [x] **06. Arrays, Loops, & LocalStorage** *(Lessons 11 Part 1 & 2)*
 
 ### 🔹 Phase 3: Advanced JS Architecture & System Scaling
-- [ ] **07. Advanced Functions** *(Lesson 12 Part 1 & 2)*
+- [x] **07. Advanced Functions** *(Lesson 12 Part 1 & 2)*
 - [ ] **08. Modularization & Git Ecosystem** *(Lessons 13-15)*
 - [ ] **09. Robust Software Testing** *(Lesson 16)*
 - [ ] **10. Object-Oriented Programming (OOP)** *(Lesson 17 & Classes/Inheritance)*
@@ -32,8 +32,8 @@ Here's the link of the
 
 ## 📂 Subfolder Quick Links
 
-* [📁 Phase 1: Core Logic](./Phase-01-Core-Syntax-Logic)
-* [📁 Phase 2: Data Structures & DOM](./Phase-02-Data-Structures-DOM)
-* [📁 Phase 3: Advanced Architecture](./Phase-03-Advanced-JS-Architecture)
+* [📁 Phase 1: Core Logic](./Phase-01)
+* [📁 Phase 2: Data Structures & DOM](./Phase-2-Data-Structures-DOM)
+* [📁 Phase 3: Advanced Architecture](./Phase-3-Advanced-JS-Architecture)
 * [📁 Phase 4: Asynchronous & Backend](./Phase-04-Asynchronous-Backend)
 
