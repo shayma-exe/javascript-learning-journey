@@ -25,7 +25,7 @@ function greeting() {
   console.log('hello');
 }
 ```
-Notice how we invoke `greeting()` before its body (function declaration) later on  
+👀 Notice how we invoke `greeting()` before its body (function declaration) later on  
 **How can that be possible :O ?**  
 The JavaScript engine *scans* our file and allocates memory for function declarations **BEFORE** executing the code line-by-line
 
