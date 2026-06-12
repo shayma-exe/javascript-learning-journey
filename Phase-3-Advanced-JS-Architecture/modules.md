@@ -1,6 +1,6 @@
 # 📓 Lesson 13: Modules 
 
-## Overview
+## 👀 Overview
 This notes is an introduction to module, their implementation workflows and real-world application inside e-commerce project we can use them.  
 You'll also find a set of technical challenges I encountered during development, "why" they are a problem and their fix  
 Studying problems and their fix are the best way to learn :D  
