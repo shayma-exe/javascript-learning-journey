@@ -2,7 +2,11 @@
 
 Welcome to my central documentation space! This repository serves as a living laboratory where I log my learning progress into my JavaScript Course from Super Simple Dev
 Here's the link of the 
-[Course](https://youtu.be/EerdGm-ehJQ?si=7s3M9PI1vbPCbJRx) on youtube
+[course on youtube](https://youtu.be/EerdGm-ehJQ?si=7s3M9PI1vbPCbJRx) 
+
+**Note** that this documentation is selective (not everything seen in the course is included), as the best way to take advantage of the course is to follow it.\
+This is just a repository of key concepts and my personal interpretations for future refrence and to monitor my growth throughout this journey\
+Enjoy :D
 
 ---
 
