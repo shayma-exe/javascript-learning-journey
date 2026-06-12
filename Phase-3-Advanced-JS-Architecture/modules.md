@@ -59,3 +59,45 @@ import { formatCurrency } from '../utils/money.js';
 ### 🛑 Architectural Conditions
 **1. Header rule :** all `import` statements MUST sit at the absolute top of the file.  
 **2. Environment Restriction :** Modules won't work if you open the HTML file directly in a browser using local file system (from the files you find on your computer c: ). Must use a local development server like : VS Code Live Server
+
+## 3. Display products on checkout page:
+I'll take you with me through my thought process while trying to figure how to display the product saved inside a cart array, and display it on the website !  
+
+**Problem :** Inside cart, we only save id & quantity of each product, but the checkout page displays way more details about each product !!    
+Those details are saved in `product.js` file.    
+
+**So, 2 information to keep in mind :**  
+Checkout items (product in the cart) are in `cart.js`.  
+Products details are saved in `product.js`.  
+
+### 💻 Technical Blueprint & Syntax
+**How can we connect between the two ?**
+```JavaScript
+cart.forEach((cartItem) => {
+  //Get the cart id :
+  const productId = cartItem.productId;
+
+  //Find products details from product.js
+  let matchingProduct;
+
+  products.forEach((product) => {
+    if (productId === product.id) {
+      matchingProduct = product;
+    }
+  })
+```
+
+1. Save the id of each item in the cart `const productId = cartItem.productId;`.
+2. Import products from products.js `import { products } from "../data/products.js";
+`
+3. Looping through the list of all products (products array), we seek a matching id.
+4. Once found we save it in a variable `matchingProduct = product;`
+5. `matchingProduct` now contains all the details about the current item in the cart = use it to generate the HTML !
+
+**⚠️Beware**  
+Some generated HTML don't need the `matchingProduct` variable, like the quantity, it can be found directly inside the cart items' properties `cartItem.quantity`.  
+```HTML
+<span>
+  Quantity: <span class="quantity-label">${cartItem.quantity}</span>
+</span>
+```
