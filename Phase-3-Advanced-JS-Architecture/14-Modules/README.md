@@ -195,3 +195,29 @@ document.querySelectorAll('.js-update-link')
     });
   });
 ```
+Make save button interactive.  
+Code on its own  
+```JavaScript
+//Make 'save' button interactive
+document.querySelectorAll(`.js-save-quantity-link`)
+  .forEach(link => {
+    link.addEventListener('click', () => {
+      const productId = link.dataset.productId;
+
+      const container = document.querySelector(`.js-cart-item-container-${productId}`);
+      container.classList.remove('is-editing-quantity');
+
+      const quantityInput = document.querySelector(`.js-quantity-input-${productId}`).value;
+      const newQuantity = Number(quantityInput);
+      //Add validity check !
+      if (newQuantity >= 0 && newQuantity < 1000) {
+        updateQuantity(productId, newQuantity);
+
+        document.querySelector(`.js-quantity-label-${productId}`).innerHTML = newQuantity;
+
+        updateCartQuantity();
+      }
+
+    });
+  });
+```
