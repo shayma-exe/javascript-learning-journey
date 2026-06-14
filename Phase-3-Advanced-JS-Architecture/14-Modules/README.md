@@ -110,13 +110,16 @@ Some generated HTML don't need the `matchingProduct` variable, like the quantity
 
 ## 3. exercises review & personal notes
 Let's go through my struggles and thought process together ;.)
+⚠️ NOTE ! These code snippets ALONE aren't functional, they're parts of a bigger project, I placed them here just to make the examples clearer.  
 
-### He asked me : when page loads, do 'x'
-I was confused about what if I should place it somewhere specific in the file, but no
-Here's the steps : 
-1. Go into the JavaScript file of this page (if amazon.html go for amazon.js).  
-2. Just create/invokate a funtion (that does 'x' ) there on one line.
+### He asked me " when page loads, do 'x' "
+I was confused at first about whether I should place it somewhere specific in the file, but nope !
 
+#### 💡Solution :
+1. Go into the JavaScript file of this page (ex : if you're working for `amazon.html` go for  `amazon.js`).  
+2. Just create/invoke a funtion (the one that handles 'x' )right there on its own line.
+
+#### 💻 Code
 *Example* : When page loads : update cart quantity
 
 ```JavaScript
@@ -131,11 +134,11 @@ I was deleting the products from the page, the cart in memory was being updated 
 
 #### 🎯 Where's the issue ?
 The fact that the numbers only updated upon refreshing meant two things :
-1. The cart data was changing successfully => No problem with the cart !
+1. The cart data was changing successfully => No problem with the cart !  
 2. When the page loaded fresh, it read the right numbers => no problem with display AFTER refresh
-Hmm, do you see it ?
-Loaded = reading the script file `checkout.js` again !
-And that script file is what contains the code to compute the total quantity in the cart
+Hmm, do you see it ?  
+Loaded = reading the script file `checkout.js` again !  
+And that script file is what contains the code to compute the total quantity in the cart.  
 
 #### 💡Solution :
 The browser reads the script file + calculates the total ONCE on page load.  
@@ -161,6 +164,29 @@ document.querySelectorAll('.js-delete-link')
   });
 ```
 
-**👀 Notice** at *step 3* how I invoked `updateCartQuantity()` right inside the delete event listener !
+**👀 Notice** at *step 3* how I invoked `updateCartQuantity()` right inside the delete event listener !  
 Now every single click forces the header to recalculate and stay perfectly in sync with our data
    
+### Making 'update' on product button functional
+Let me just explain the solution he was following :
+
+1. Add event listener to ALL 'update' buttons `document.querySelectorAll('.js-update-link')`
+2. Get the Exact product we're modifying using its id, we attached the id info to the update link, to get it once we call it from `const productId = link.dataset.productId;`
+4. Select container of the whole product `document.querySelector(`.js-cart-item-container-${productId}`);`
+5. Add a class to container `classList.add('is-editing-quantity')`.
+
+#### 💻 Code
+```JavaScript
+//Make 'update' button interactive
+document.querySelectorAll('.js-update-link')
+  .forEach(link => {
+    link.addEventListener('click', () => {
+      const productId = link.dataset.productId;
+
+      //Find container of product to update, add class = is-editing-quantity
+      const container = document.querySelector(`.js-cart-item-container-${productId}`);
+      container.classList.add('is-editing-quantity');
+
+    });
+  });
+```
