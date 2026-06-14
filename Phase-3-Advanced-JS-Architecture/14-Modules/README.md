@@ -8,6 +8,7 @@ Studying problems and their fixes are the best way to learn :D
 ## 🗺️ Table of Contents
 1. [🧩 The Module Paradigm: Scope Isolation](#1-the-module-paradigm-scope-isolation)
 2. [📦 Import & Export Blueprints](#2-import--export-blueprints)
+3. [Me VS Exercises](#3-exercises-review-&-personal-notes)
 
 ## 1. The Module Paradigm: Scope Isolation
 
@@ -99,9 +100,67 @@ cart.forEach((cartItem) => {
 5. `matchingProduct` now contains all the details about the current item in the cart = use it to generate the HTML !
 
 **⚠️Beware**  
-Some generated HTML don't need the `matchingProduct` variable, like the quantity, it can be found directly inside the cart items' properties `cartItem.quantity`.  
+Some generated HTML don't need the `matchingProduct` variable, like the quantity, it can be found  directly inside the cart items' properties `cartItem.quantity`.  
+
 ```HTML
 <span>
   Quantity: <span class="quantity-label">${cartItem.quantity}</span>
 </span>
 ```
+
+## 3. exercises review & personal notes
+Let's go through my struggles and thought process together ;.)
+
+### He asked me : when page loads, do 'x'
+I was confused about what if I should place it somewhere specific in the file, but no
+Here's the steps : 
+1. Go into the JavaScript file of this page (if amazon.html go for amazon.js).  
+2. Just create/invokate a funtion (that does 'x' ) there on one line.
+
+*Example* : When page loads : update cart quantity
+
+```JavaScript
+//On a random line :
+updateCartQuantity();
+```
+
+### Why quantity of items (in the header) is not updated when deleting a product in the cart ?
+
+#### 🎬 Scenario :
+I was deleting the products from the page, the cart in memory was being updated perfectly but the total number of items in the header section remained the same..until I refreshed the page again !  
+
+#### 🎯 Where's the issue ?
+The fact that the numbers only updated upon refreshing meant two things :
+1. The cart data was changing successfully => No problem with the cart !
+2. When the page loaded fresh, it read the right numbers => no problem with display AFTER refresh
+Hmm, do you see it ?
+Loaded = reading the script file `checkout.js` again !
+And that script file is what contains the code to compute the total quantity in the cart
+
+#### 💡Solution :
+The browser reads the script file + calculates the total ONCE on page load.  
+If I wanted it to update the total number of items *ANOTHER* time, I had to manually trigger that recalculation.  
+It means : running it each time the user deletes a product was deleting a product or more generally : whenever I update product numbers on the page (what we'll do later on with 'update' button).  
+
+```JavaScript
+//Set event listeners to 'delete' button of EACH (ALL) product
+document.querySelectorAll('.js-delete-link')
+  .forEach((link) => {
+    link.addEventListener('click', () => {
+      //1. Remove from cart
+      const productId = link.dataset.productId;
+      removeFromCart(productId);
+
+      //2. Remove container from the web page
+      const container = document.querySelector(`.js-cart-item-container-${productId}`);
+      container.remove();
+
+      //3. Update the header total items live !
+      updateCartQuantity();
+    });
+  });
+```
+
+**👀 Notice** at *step 3* how I invoked `updateCartQuantity()` right inside the delete event listener !
+Now every single click forces the header to recalculate and stay perfectly in sync with our data
+   
