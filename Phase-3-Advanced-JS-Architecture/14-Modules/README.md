@@ -168,10 +168,15 @@ document.querySelectorAll('.js-delete-link')
 Now every single click forces the header to recalculate and stay perfectly in sync with our data
    
 ### Making 'update' on product button functional
-Let me just explain the solution he was following :
 
+#### 🎯 What we wanna do :
+Clicking on 'update' button make *switch* to an : input field (enter quantity) + 'save' button.  
+Clicking on 'save' switch back to 'update' button + modify the WHOLE quantity of the product.  
+
+#### 💡Solution :
+Let me just explain the solution he was following :
 1. Add event listener to ALL 'update' buttons `document.querySelectorAll('.js-update-link')`
-2. Get the Exact product we're modifying using its id, we attached the id info to the update link, to get it once we call it from `const productId = link.dataset.productId;`
+2. Get the Exact product we're modifying using its id, that we attached into the update link, to get it once we call `const productId = link.dataset.productId;`
 4. Select container of the whole product `document.querySelector(`.js-cart-item-container-${productId}`);`
 5. Add a class to container `classList.add('is-editing-quantity')`.
 
