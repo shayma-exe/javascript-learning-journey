@@ -1,12 +1,17 @@
 # 🚀 My JavaScript Learning Journey
 
-Welcome to my central documentation space! This repository serves as a living laboratory where I log my learning progress into my JavaScript Course from Super Simple Dev
-Here's the link of the 
+Welcome to my central documentation space! This repository serves as a living laboratory where I log my learning progress into my JavaScript Course from Super Simple Dev.  
+Here's the link to the 
 [course on youtube](https://youtu.be/EerdGm-ehJQ?si=7s3M9PI1vbPCbJRx) 
 
 **Note** that this documentation is selective (not everything seen in the course is included), as the best way to take advantage of the course is to follow it.\
 This is just a repository of key concepts and my personal interpretations for future refrence and to monitor my growth throughout this journey\
 Enjoy :D
+
+⚠️This is a **personal** repository, NOT an instructional guide.  
+It just gather my own takeaways, challenges, missteps and questions.  
+This log captures my individual growth in JavaScript rather than the course curriculum itself.  
+Please **DO NOT** treat it as a reliable study resource..
 
 ---
 
