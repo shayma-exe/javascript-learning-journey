@@ -56,11 +56,7 @@ It's up to you whick version to use.
 
 ## dayjs library & documentation
 
-What's the goal ? 
-
-Let's get to know it from its documentation.  
-Now that we imported our external library.  
-How can we use it ?  
+Now that we imported our external library.   
 The best way is to read the **documentation**
 
 dayJS library creates a function : dayjs();  
