@@ -111,3 +111,148 @@ Instead we save them seperatly then save an ID that points to this delivery opti
 1. Create a new script file 'deliveryOptions' in `data` folder.
 2. Create an array containing the options as objects.
 
+```JavaScript
+export const deliveryOptions = [{
+  id: '1',
+  deliveryDays: 7,
+  priceCents: 0
+}, {
+  id: '2',
+  deliveryDays: 2,
+  priceCents: 499
+}, {
+  id: '3',
+  deliveryDays: 1,
+  priceCents: 999
+}]
+```
+
+### 2. Generate the HTML
+Follow these 3 steps :  
+1. Loop through deliveryOptions
+2. For each option : generate some HTML
+3. Combine the HTML together
+
+**Step 1 & 2** orderSummary.js file Inside a function : loop through the array + generate the HTML (the orangist code)
+
+**Custom delivery date :**  
+Let's generate a CUSTOM date per deliveryOption !  
+At the top inside the function :
+
+```JavaScript
+  const today = dayjs();
+  const deliveryDate = today.add(deliveryOption.deliveryDays, 'days');
+  const dateString = deliveryDate.format('dddd, MMMM D');
+```
+**Custom price :**   
+Using ternary operator : 
+```JavaScript
+const priceString = deliveryOption.priceCents === 0
+        ? 'FREE'
+        : `$${formatCurrency(deliveryOption.priceCents)} -`;
+```
+
+Now that we have our date `dateString` and price `priceString` variables, we insert them into the generated HTML.That's we're doing in step 3 :D
+
+**Step 3 : Combining the HTML**  
+Created an accumulator patter (variable =+ generated HTML) that the function returns at the end
+We then inserted the function into the generated HTML for each product :
+Here we passed matching product variable as a param, cause it's needed 
+
+```JavaScript
+html += `
+    <div class="delivery-option js-delivery-option"
+      data-product-id="${matchingProduct.id}"
+      data-delivery-option-id="${deliveryOption.id}"
+      >
+      <input type="radio"
+        ${isChecked ? 'checked' : ''}
+        class="delivery-option-input"
+        name="delivery-option-${matchingProduct.id}">
+      <div>
+        <div class="delivery-option-date">
+          ${dateString}
+        </div>
+        <div class="delivery-option-price">
+          ${priceString} Shipping
+        </div>
+      </div>
+    </div>
+```
+**👀 Notice :** `name="delivery-option-${matchingProduct.id}">` we set a different name for each set of product, name attribute is what determine what radio element are from the same set or not.
+
+## Problem : Empty delivey options
+Goal : We want to select one by default.
+Which one should be checked ?  
+The one that matches the deliveryOption id in the cart => Let's find it !  
+
+```JavaScript
+const isChecked = deliveryOption.id === cartItem.deliveryOptionId;
+```
+Now remember that `checked` is a property inside `<input>` tag.  
+Property : means its value = string.  
+This line of code is setting a check on the right delivery option among the 3 proposed.  
+
+```JavaScript
+<input type="radio"
+${isChecked ? 'checked' : ''}
+//Code...
+>
+```
+
+### Match Selected date on top
+
+From the cart, we only save the delivery option id; we'll use it.  
+1. Get id from the cart item.
+2. Find matching id in deliveryOptions array.
+3. Format the right date.
+4. Place date variable on the product generated HTML.
+
+## 3. Make it interactive = event listeners tiimme :D
+
+Goal : When selecting a different option it updates the date  
+Pseudo-code (steps to follow):
+	1. Update deliveryOptionId in the cart array
+	2. Update the page (HTML) date up the product to match the selected option
+
+### 1. Update deliveryOptionId in the cart
+Create a function in 'cart.js' that does :
+	1. Loop through the cart to find the product (using productId)
+	2. Update the deliveryOptionId of the product (using newDeliveryOptionId)
+In order to do so the function needs 2 params : 
+	1. productId we're updating 
+	2. New delivery Option
+
+When adding event listeners invoking the function inside it  
+How can we get its two parameters: **productId**, **newDeliveryOptionId**.  
+We attach it to element we're getting using the DOM.  
+Extract from the 'element' it inside the function :  
+And now we can fill our function's parameter, yay :D  
+
+### 2. Update the page :
+
+Problem with updating using the DOM : update it one-by-one what make it easy to forget something..
+Best practice is to re-render the page each time we modify something.  
+How ?  
+Place all the generated HTML inside a function  
+Instead of using the DOM to update the page directly (like we did up here)  
+
+#### Why placing the event listener INSIDE render function ?
+When regenerating the HTML, we're wiping out the old event listener = we need to add them again.
+
+## Regenerate all HTML = technique MVC
+MVC : project is split into 3 parts :
+	1. Model : code that saves and manages the data (ex : cart.js file)
+	2. View : Takes the data and displays it on the page (ex : HTML in checkout.js)
+	3. Controller : runs code when interacting with the page (ex : event listeners in checkout.js)
+
+They interact with each other in a loop
+	1. Use Model to generate the View (generated HTML from cart)
+	2. When interacting with the View it will run the Controller (interacting with the page : runs some code)
+	3. Controller will update the Model (data)
+	4. Use the updated Model to regenerate the View
+### Why use MVC ? 
+This techniques makes sure the page always matches the data
+Design pattern = a way to organize our code 
+Many javaScript frameworks are based on MVC
+
