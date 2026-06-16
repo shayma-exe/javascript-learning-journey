@@ -13,14 +13,17 @@ And we can actually loads their code into our project !
 ### How to load it ?
 Add a `<script>` tag at the end of the html page.   
 Use the `src` attribute to past the URL in.  
+```HTML
+<script src="https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js"></script>
+```
 Now whatever is in the code, we can run it.  
 
-Sometime the code we're uploading looked cursed..(no spaces at all :o )   
+Sometime the code we're uploading looks cursed..(no spaces at all :o )   
 It's just something called **minification**  
 What's the purpose of minification ?  
 Compressing the code makes the loading process from the internet easier.  
 
-## Problem with script tags
+### Problem with script tags
 May cause naming conflics if the library contains names of variable we're already using in our project
 
 Solution ? => Modules :D
@@ -28,7 +31,7 @@ To use : modules + libraries
 We use ECM version of JavaScript  
 ECM verion = JavaScript + extend in front of its functions  
 
-## ECM vs JavaScript  
+### ECM vs JavaScript  
 JavaScript
 ```JavaScript
 function hello() {
