@@ -18,7 +18,7 @@ Use the `src` attribute to past the URL in.
 ```
 Now whatever is in the code, we can run it.  
 
-Sometime the code we're uploading looks cursed..(no spaces at all :o )   
+**👀 Notice :** If you look into the code we're uploading it can look cursed..(no spaces at all :o )   
 It's just something called **minification**  
 What's the purpose of minification ?  
 Compressing the code makes the loading process from the internet easier.  
@@ -53,40 +53,50 @@ At the top of the JavaScript file type :
 ```JavaScript
 import dayjs from "https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js"
 ```
-No curly brakets ?   
+**👀 Notice :** No curly brakets `{dayjs}`?   
 It's called the default export  
 Used when we only wanna export one thing = make the syntax cleaner  
-It's up to you whick version to use.  
+It's up to you 🫵🏻 which version to use.  
 
 ## dayjs library & documentation
 
-Now that we imported our external library.   
-The best way is to read the **documentation**
+Now that we imported our external library, the best way is to read the **documentation**  
+Here what we've seen in the course:  
 
 dayJS library creates a function : dayjs();  
 Returns an object containing today dates  
 Dayjs() has methods : 
 
-**Increase the number of days ?**  
-.add(1st , 2nd)  
-1st :  nbr of days  
-2nd : what format ?  
+### Increase the number of days ?  
+`.add(1st , 2nd) `  
+- 1st :  nbr of days  
+- 2nd : what format ?  
 
-*Ex :* `dayjs().add(7,'days')`
+*Example :*  
+```JavaScript
+dayjs().add(7,'days');
+```
 7 days after today
 
-**Need to display the date in an easy to read format ?**
-(Get rid of the object format)
-.format() :
+### Need to display the date in an easy to read format ?
+(Get rid of the object format)  
+`.format()` :  
 
 Takes date and converts it into a **string** using given format  
 How to pass the format in ?  
-Using the table present in the documentation  
+Using the table present in the documentation   
+*Example*
+```JavaScript
+dayjs().format('dddd, MMMM D');
+```
+- `dddd` full weekday name
+- `MMMM` full month name
+- `D` numeric day of the month
 
-## delivery options e-commerce
-Goal : Clicking an option = change delivery date + price
-Pseud-code :
-1. Get today date.
+## Delivery options e-commerce project
+Goal : Clicking an option = changes delivery date + price
+Pseudo-code :
+1. Get today's date.
 2. Do calculation : adding 'x' days.
 3. Display the date in easy-to-read format.
 
