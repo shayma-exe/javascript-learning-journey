@@ -212,16 +212,16 @@ From the cart, we only save the delivery option id; we'll use it.
 
 Goal : When selecting a different option it updates the date  
 Pseudo-code (steps to follow):
-	1. Update deliveryOptionId in the cart array
-	2. Update the page (HTML) date up the product to match the selected option
+1. Update deliveryOptionId in the cart array
+2. Update the page (HTML) date up the product to match the selected option
 
 ### 1. Update deliveryOptionId in the cart
 Create a function in 'cart.js' that does :
-	1. Loop through the cart to find the product (using productId)
-	2. Update the deliveryOptionId of the product (using newDeliveryOptionId)
+1. Loop through the cart to find the product (using productId)
+2. Update the deliveryOptionId of the product (using newDeliveryOptionId)
 In order to do so the function needs 2 params : 
-	1. productId we're updating 
-	2. New delivery Option
+1. productId we're updating 
+2. New delivery Option
 
 When adding event listeners invoking the function inside it  
 How can we get its two parameters: **productId**, **newDeliveryOptionId**.  
@@ -242,14 +242,14 @@ When regenerating the HTML, we're wiping out the old event listener = we need to
 
 ## Regenerate all HTML = technique MVC
 MVC : project is split into 3 parts :
-	1. Model : code that saves and manages the data (ex : cart.js file)
-	2. View : Takes the data and displays it on the page (ex : HTML in checkout.js)
-	3. Controller : runs code when interacting with the page (ex : event listeners in checkout.js)
+1. Model : code that saves and manages the data (ex : cart.js file)
+2. View : Takes the data and displays it on the page (ex : HTML in checkout.js)
+3. Controller : runs code when interacting with the page (ex : event listeners in checkout.js)
 
 They interact with each other in a loop
-	1. Use Model to generate the View (generated HTML from cart)
-	2. When interacting with the View it will run the Controller (interacting with the page : runs some code)
-	3. Controller will update the Model (data)
+1. Use Model to generate the View (generated HTML from cart)
+2. When interacting with the View it will run the Controller (interacting with the page : runs some code)
+3. Controller will update the Model (data)
 	4. Use the updated Model to regenerate the View
 ### Why use MVC ? 
 This techniques makes sure the page always matches the data
