@@ -26,10 +26,10 @@ Compressing the code makes the loading process from the internet easier.
 ### Problem with script tags
 May cause naming conflics if the library contains names of variable we're already using in our project
 
-Solution ? => Modules :D
+Solution ? => Modules :D  
 To use : modules + libraries  
 We use ECM version of JavaScript  
-ECM verion = JavaScript + extend in front of its functions  
+ECM version = JavaScript + extend in front of its functions  
 
 ### ECM vs JavaScript  
 JavaScript
@@ -48,6 +48,7 @@ export function hello() {
 
 Since the ECM version exports its variable and function  
 All you do is importing it from the source = internet URL.  
+At the top of the JavaScript file type :  
 
 ```JavaScript
 import dayjs from "https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js"
