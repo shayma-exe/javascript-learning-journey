@@ -57,4 +57,31 @@ Inside its inner function :
 Object = has many methods to use.  
 *ex*: `expect(...).toEqual(...);`  
 
+We'll see many methods as we build our project together.  
+
+#### 3. Once we created a test, how can we run it ?
+By creating a `<script>` tag inside the `test.html` file.  
+*Example :*
+```JavaScript
+<script src="moneyTest.js" type="module" ></script>
+```
+**👀 Notice :** We added `type="module"` cause we're importing the code to test from original files. 
+Now all we have to do is open the html file using liveServer !  
+
+#### What happends when a test file ?
+Jasmine gives us a lot of details to help us fix the issue.  
+Here an exemple of how it would look like :  
+<img width="767" height="125" alt="Capture d&#39;écran 2026-06-18 195134" src="https://github.com/user-attachments/assets/629739aa-5efd-4739-83bd-cd5241b867be" />
+
+### Problem : Testing REAL values : introducing 'mock'
+
+Scenario : We wanna test wether a function adds a product to a cart.  
+When adding a product to an **empty** cart, we expect the length to be equal to 1.  
+But 'cart' variable changes, it's not fixed = test fails just because the length is different from what we expected, not because the code didn't work !  
+
+This is where **Mock** comes ! :D 
+**Mock** = replace a method with a fake version.  
+
+#### How Mocking works ?
+By using method ``spyOn()`.  
 
