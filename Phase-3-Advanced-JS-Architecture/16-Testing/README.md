@@ -26,7 +26,7 @@ We explicitly tell the computer to do these tests for us !
 ## 🛠️ Testing before frameworks 
 
 Here's the pratical steps :  
-1. Create a dedicated file for each file we wanna test from our project.
+1. Create a dedicated test file for each file we wanna test from our project.
 2. At the top of the brand new file, import the functions to test.
 3. Using 'if-statement' write expected result for every different scenario.
 4. Create ONE HTML file to load ALL these tests using `<script>` tags.
@@ -54,9 +54,8 @@ if (formatCurrency(2095) === '20.95') {
 ---
 ## 🛠️ Jasmine Setup & Directory Architecture
 
-
 #### What's Jasmine ?
-A testing framework that let us create tests easier by providing us many features, remember the architecture we've been doing ? 
+A testing framework that let us create tests easier by providing us many features, remember the architecture we've been building ? 
 Here it is :
 1. Create a test suit.
 2. Create tests.
@@ -70,7 +69,7 @@ Let's get to know the files and some therminology first :
 
 ### Add our own tests :
 #### 1. Cleaning up phase :
-1. Inside test.html delete : code by default ( everything but Jasmine framworks )
+1. Inside test.html delete : code by default ( everything but Jasmine frameworks )
 2. Remove *src* and *spec* folders.
 
 #### 2. Creating a test :
@@ -107,13 +106,71 @@ Here an exemple of how it would look like :
 
 ### Problem : Testing REAL values :  introducing 'mock'
 
-**🎬 Scenario :** We wanna test wether a function adds a product to a cart.  
-When adding a product to an **empty** cart, we expect the length to be equal to 1.  
+**🎬 Scenario :** We wanna test `addToCart()`, a function which adds a product to a cart.  
+When adding a product to an **empty** cart, we expect the overall length to be equal to 1.  
 But 'cart' variable changes, it's not fixed = test fails just because the length is different from what we expected, not because the code didn't work !  
 
 This is where **Mock** comes in ! :D 
 **Mock** = replace a method with a fake version.  
 
 #### How Mocking works ?
-By using method ``spyOn()`.  
+WE decide what the method do/return.
+At the top of the test `it()` add `spyOn()` code :
 
+*Example syntax :*
+```JavaScript
+spyOn(Object to mock, string method ).and.callFake( () => {
+//Code to override the 'method'
+} );
+```
+In our 'empty cart' case, once the function calls load from localStorage using the method `getItem()`, we rather want it to return an empty cart : `return JSON.stringif([]);`.  
+Here's how the code would look :  
+```JavaScript
+spyOn(localStorage, 'getItem').and.callFake( () => {
+    //Control what WE want the localStorage to return >:D
+    return JSON.stringify([]);
+});
+loadFromStorage();
+```
+**👀 Notice :** Let's talk about this `loadFromStorage();`, why is it important to load again ?  
+Order matters ! We need to tell the computer : we mocked the method first using `spyOn()` THEN call it. 
+So what happends when `loadFromStorage()` is called ?  
+It runs `localStorage.setItem()` from the original code, but we mocked it here, so calling it make it returns EXACTLY what we wrote (empty array) !  
+
+#### Saving problem :
+Inside the function `addToCart()` we save to localStorage.  
+But we DON'T want the test to modify the **actual** 'cart' variable.  
+**Solution :**  
+Mock LocalStorage.setItem() too !  
+What we want : no saving.   
+What we write : make it do nothing (no return) !  
+
+```JavaScript
+spyOn(localStorage,'setItem');
+```
+
+#### How to check a method was called ?
+What if I wanted to make sure the cart was actually saved in localStorage ?  
+Saved in localStorage = called the method `.setItem()`.  
+**Solution :**  
+`spyOn()` records every time a method is used.  
+🗒️**Reminder :** `Expect()` returns an object with many methods.  
+A useful method for this situation is `.toHaveBeenCalledTimes()`.  
+Full Syntax :  
+```JavaScript
+expect(localStorage.setItem).toHaveBeenCalledTimes(1);
+```
+
+### Unit Test Vs. Integration Test :
+
+- **Unit test :** testing ONE piece of the code. This is what we've been doing until now.
+- **Integration Test :** tests many units/pieces of code working together.
+
+Example of an integration test :
+Testing `renderOrderSummary()` = uses *multiple* functions and libraries to render the page.  
+Let's go through this together :
+
+#### What test cases (it()) should we create ? 
+When testing the page, we have 2 things to test :  
+1. How it looks.  
+2. How it behave.
