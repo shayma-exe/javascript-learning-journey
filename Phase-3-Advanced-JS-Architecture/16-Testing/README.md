@@ -16,22 +16,54 @@ At the end you'll be able to understand those 'words', how a test work.
 "Maybe it works for the current variable the page's displaying, but you have no garantee once the variable changes.."  
 
 **- Automated testing :** Using code to test code.   
-We explictly tell the computer to do these tests for us !
+We explicitly tell the computer to do these tests for us !
 
 ### How many test cases should we have :
 - **Basic Cases :** Verifying expected behavior "Is the code working ?"
 - **Edge cases :** Testing risky values "Can this same code do X ?" 
 
+---
+## 🛠️ Testing before frameworks 
+
+Here's the pratical steps :  
+1. Create a dedicated file for each file we wanna test from our project.
+2. At the top of the brand new file, import the functions to test.
+3. Using 'if-statement' write expected result for every different scenario.
+4. Create ONE HTML file to load ALL these tests using `<script>` tags.
+
+Inside a test file, what's the architecture ?  
+1. Create test suite `console.log('test suite : ...')`.
+2. Create tests inside the suite `console.log('test name ...')`
+3. Compare values and display result (passed/failed) `ìf(...){//Passed/failed}`
+
+💻 Syntax example :
+```JavaScript
+import {formatCurrency} from "../scripts/utils/money.js";
+
+console.log('Test suite : formatCurrency');
+
+console.log('convert cents into dollars');
+
+if (formatCurrency(2095) === '20.95') {
+  console.log('passed');
+} else {
+  console.log('failed');
+}
+
+```
+---
 ## 🛠️ Jasmine Setup & Directory Architecture
 
+
 #### What's Jasmine ?
-A testing framework that let us create tests easier by providing us many features to :
-1. Create test suit.
+A testing framework that let us create tests easier by providing us many features, remember the architecture we've been doing ? 
+Here it is :
+1. Create a test suit.
 2. Create tests.
 3. Compare values ad display result (passed / failed) 
 
 ### How to use Jasmine ?
-Let's get to know the files first :
+Let's get to know the files and some therminology first :
 - Spec : test file itself.
 - SupecRunner.html : By default we find : loading frameworks, code we wanna test, files containing the test.  
 **☝🏻Note** : we renamed `SupecRunner.html` into `test.html` for simplicity.
@@ -73,13 +105,13 @@ Jasmine gives us a lot of details to help us fix the issue.
 Here an exemple of how it would look like :  
 <img width="767" height="125" alt="Capture d&#39;écran 2026-06-18 195134" src="https://github.com/user-attachments/assets/629739aa-5efd-4739-83bd-cd5241b867be" />
 
-### Problem : Testing REAL values : introducing 'mock'
+### Problem : Testing REAL values :  introducing 'mock'
 
-Scenario : We wanna test wether a function adds a product to a cart.  
+**🎬 Scenario :** We wanna test wether a function adds a product to a cart.  
 When adding a product to an **empty** cart, we expect the length to be equal to 1.  
 But 'cart' variable changes, it's not fixed = test fails just because the length is different from what we expected, not because the code didn't work !  
 
-This is where **Mock** comes ! :D 
+This is where **Mock** comes in ! :D 
 **Mock** = replace a method with a fake version.  
 
 #### How Mocking works ?
