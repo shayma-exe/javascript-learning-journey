@@ -4,7 +4,9 @@ At the end you'll be able to understand those 'words', how a test work.
 
 ---
 ## 📋 Table of Contents
-
+- [Testing Fundamental Concepts](#-testing-fundamental-concepts)
+- Simple Testing (before frameworks)
+- Jasmine Setup & Directory Architecture
 ---
 
 ## 🧠 Testing Fundamental Concepts
@@ -23,7 +25,7 @@ We explicitly tell the computer to do these tests for us !
 - **Edge cases :** Testing risky values "Can this same code do X ?" 
 
 ---
-## 🛠️ Testing before frameworks 
+## 🛠️ Simple Testing (before frameworks)
 
 Here's the pratical steps :  
 1. Create a dedicated test file for each file we wanna test from our project.
@@ -54,7 +56,7 @@ if (formatCurrency(2095) === '20.95') {
 ---
 ## 🛠️ Jasmine Setup & Directory Architecture
 
-#### What's Jasmine ?
+### What's Jasmine ?
 A testing framework that let us create tests easier by providing us many features, remember the architecture we've been building ? 
 Here it is :
 1. Create a test suit.
@@ -65,6 +67,7 @@ Here it is :
 Let's get to know the files and some therminology first :
 - Spec : test file itself.
 - SupecRunner.html : By default we find : loading frameworks, code we wanna test, files containing the test.  
+
 **☝🏻Note** : we renamed `SupecRunner.html` into `test.html` for simplicity.
 
 ### Add our own tests :
@@ -174,3 +177,70 @@ Let's go through this together :
 When testing the page, we have 2 things to test :  
 1. How it looks.  
 2. How it behave.
+
+### How a page looks : 
+Problem : the original HTML is placed on the page, but where do we place it for our test ?  
+If we look closer at the rendering function from the source code, it places the HTML inside a class :  
+```JavaScript
+document.querySelector('.js-order-summary').innerHTML = cartSummaryHTML;
+```
+👉🏻 We need to create an element of the same class , inside our 'test.html' file !  
+We create it into a container : `<div>` element.  
+Why ?   
+We don't want to modify our entire body element cause it contains the result of Jasmine tests (display page).  
+
+*test.html*   
+```JavaScript
+<body>
+  <div class="js-test-container"></div>
+</body>
+```
+
+*orderSummaryTest.js*
+```JavaScript
+document.querySelector('.js-test-container').innerHTML = `
+      <div class="js-order-summary" ></div>`
+```
+Inside the element holding the class `js-test-container`, we insert the class the function is calling/using to render the page.
+
+renderOrderSummary() uses the cart = by default we load it from localStorage = mock `localStorage.getItem()` to control what's in the cart.  
+
+Note : don't forget to add a `<script>` tag in test.html file to run the test.  
+
+#### Why the test page looks ugly :c , no CSS or images?
+
+<img width="651" height="1046" alt="image" src="https://github.com/user-attachments/assets/2015dded-7f16-4850-a0e7-637ce46a4873" />
+
+We can't really use code to check if the page looks VISUALLY correct.  
+Instead we can check the 'data' = products and quantities.  
+This is what we'll do below.
+
+#### 1. Test number of products :
+
+1. Add a 'js' class to whole products containers in source code.
+2. Use it to select into an `expect()`, it document.querySelector returns an array = has method .length
+3. Test if 'length' is equal to 2.
+
+*orderSummaryTest.js*
+```JavaScript
+expect(
+      document.querySelectorAll('.js-cart-item-container').length
+    ).toEqual(2);
+```
+
+#### 2. Test quantity of a single products :
+1. Add 'custom' classes to product quantity containers
+2. Select product's quantity by product's id
+3. innerText = get only the text inside the elements
+4. There's a bunch of text : we want it to contain 'Quantity: 2' without minding about the others = use toContain() method.
+
+
+```JavaScript
+expect(
+  document.querySelector(`.js-product-quantity-${productId1}`).innerText
+).toContain('Quantity: 2');
+
+expect(
+  document.querySelector(`.js-product-quantity-${productId2}`).innerText
+).toContain('Quantity: 1');
+```
